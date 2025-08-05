@@ -1,8 +1,8 @@
 export const API_CONFIG = {
   // Base URL for the API
-  baseUrl: process.env.NODE_ENV === "development" 
+  baseUrl: process.env.BACKEND_API_URL || (process.env.NODE_ENV === "development" 
     ? "http://localhost:8900" 
-    : "",
+    : ""),
   
   // API endpoints
   endpoints: {

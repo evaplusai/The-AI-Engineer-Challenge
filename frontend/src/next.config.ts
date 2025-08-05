@@ -7,7 +7,7 @@ const nextConfig: NextConfig = {
       ? [
           {
             source: "/api/:path*",
-            destination: "http://localhost:8900/api/:path*", // Proxy to FastAPI backend
+            destination: `${process.env.BACKEND_API_URL || "http://localhost:8900"}/api/:path*`, // Proxy to FastAPI backend
           },
         ]
       : [];
