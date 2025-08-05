@@ -1,5 +1,6 @@
 "use client";
 import React, { useRef, useEffect, useState } from "react";
+import { API_CONFIG } from "../config/api";
 
 interface ChatMessage {
   role: "user" | "assistant";
@@ -78,10 +79,7 @@ const MatrixTerminal: React.FC = () => {
     setChat((prev) => [...prev, { role: "user", content: userMessage }]);
     setUserMessage("");
     try {
-      const apiUrl = process.env.NODE_ENV === "development"
-        ? "http://localhost:8000/api/chat"
-        : "/api/chat";
-      const res = await fetch(apiUrl, {
+      const res = await fetch(API_CONFIG.getChatUrl(), {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({

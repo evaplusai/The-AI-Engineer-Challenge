@@ -34,6 +34,7 @@ class ChatRequest(BaseModel):
 @app.post("/api/chat")
 async def chat(request: ChatRequest):
     try:
+        print("openai_api_key",request.api_key)
         # Initialize OpenAI client with the provided API key
         client = OpenAI(api_key=request.api_key)
         
@@ -69,5 +70,5 @@ async def health_check():
 # Entry point for running the application directly
 if __name__ == "__main__":
     import uvicorn
-    # Start the server on all network interfaces (0.0.0.0) on port 8000
-    uvicorn.run(app, host="0.0.0.0", port=8000)
+    # Start the server on all network interfaces (0.0.0.0) on port 8900
+    uvicorn.run(app, host="0.0.0.0", port=8900)
